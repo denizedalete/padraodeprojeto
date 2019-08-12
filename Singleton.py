@@ -1,33 +1,32 @@
+#Singleton
 
-# Singleton
-
-# Primeiro Singleton por https://www.python.org/dev/peps/pep-0318/#examples
-def  singleton ( cls ):
-    instâncias = {}
-    def  getinstance ():
-        se  cls  não está  em instâncias:
-            instâncias [ cls ] =  cls ()
-        retornar instâncias [ cls ]
+#First Singleton by https://www.python.org/dev/peps/pep-0318/#examples
+def singleton(cls):
+    instances = {}
+    def getinstance():
+        if cls not in instances:
+            instances[cls] = cls()
+        return instances[cls]
     return getinstance
 
 @singleton
-classe MyClass
+class MyClass
 
-# Segundo Singleton
-Classe  Singleton :
-    # Aqui será a instância armazenada.
-    __instance =  None
+#Second Singleton
+class Singleton:
+    # Here will be the instance stored.
+    __instance = None
 
-    @ staticmethod
-    def  getInstance ():
-        "" " Método de acesso estático. " ""
-        if Singleton .__ instance ==  None :
-            Singleton ()
-        return singleton .__ instance
+    @staticmethod
+    def getInstance():
+        """ Static access method. """
+        if Singleton.__instance == None:
+            Singleton()
+        return Singleton.__instance
 
-    def  __init__ ( self ):
-        "" " Construtor virtualmente privado. " ""
-        if Singleton .__ instance ! =  None :
-            raise  Exception ( " Esta classe é um singleton! " )
-        else :
-            Singleton .__ instance =  self
+    def __init__(self):
+        """ Virtually private constructor. """
+        if Singleton.__instance != None:
+            raise Exception("This class is a singleton!")
+        else:
+            Singleton.__instance = self
